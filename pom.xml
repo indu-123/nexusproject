@@ -6,7 +6,8 @@
   <packaging>pom</packaging>
   <name>Maven Multi Module Root of Blog Application</name>
   <modules>
-  	<module>app</module>
   	<module>api</module>
+  	<module>app</module>
+ 	<module>app-mysql</module>
   </modules>
 </project>
