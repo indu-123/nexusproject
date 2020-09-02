@@ -23,7 +23,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -46,7 +46,7 @@
 			<artifactId>posts</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-	
+
 	</dependencies>
 
 	<build>
@@ -70,39 +70,18 @@
 					</execution>
 				</executions>
 				<configuration>
-					<repository>aw/blog-spotify</repository>
+					<repository>aw/blog-mysql</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
 						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
 					</buildArgs>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>io.fabric8</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.33.0</version>
-				<extensions>true</extensions>
-				<configuration>
-					<images>
-						<image>
-							<name>aw/blog-fabric8:${project.version}</name>
-						</image>
-					</images>
-				</configuration>
-				<executions>
-					<execution>
-						<id>docker-build</id>
-						<goals>
-							<goal>build</goal>
-						</goals>
-						<phase>pre-integration-test</phase>
-					</execution>
-				</executions>
-			</plugin>
+
 		</plugins>
 	</build>
-	
-	
+
+
 	<profiles>
 		<profile>
 			<id>jib</id>
@@ -114,7 +93,7 @@
 						<configuration>
 							<allowInsecureRegistries>true</allowInsecureRegistries>
 							<to>
-								<image>localhost:5000/aw/blog-google:${project.version}</image>
+								<image>localhost:5000/aw/blog-google-mysql:${project.version}</image>
 							</to>
 							<from>
 								<image>docker://adoptopenjdk:14-jre-hotspot</image>
@@ -126,6 +105,28 @@
 								<goals>
 									<goal>build</goal>
 								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>io.fabric8</groupId>
+						<artifactId>docker-maven-plugin</artifactId>
+						<version>0.33.0</version>
+						<extensions>true</extensions>
+						<configuration>
+							<images>
+								<image>
+									<name>aw/blog-fabric8-mysql:${project.version}</name>
+								</image>
+							</images>
+						</configuration>
+						<executions>
+							<execution>
+								<id>docker-build</id>
+								<goals>
+									<goal>build</goal>
+								</goals>
+								<phase>pre-integration-test</phase>
 							</execution>
 						</executions>
 					</plugin>
