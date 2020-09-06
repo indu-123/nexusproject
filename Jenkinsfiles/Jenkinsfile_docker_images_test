@@ -1,0 +1,37 @@
+
+pipeline {
+    agent none
+    stages {
+        stage('run all') {
+            parallel {
+                stage('test image maven:3.6.3-adoptopenjdk-14') {
+                    agent {
+                        docker {
+                            image 'maven:3.6.3-adoptopenjdk-14'
+                            //args '--entrypoint='
+                        }
+                    }
+                    steps {
+                        echo "I'm executing in node: ${env.NODE_NAME}"
+                        sh 'uname -r'
+                        sh 'env'
+                        sh 'which java'
+                        sh 'java -version'
+                        sh 'ls -la /usr/bin/mvn'
+                        //sh 'ls -la /etc/alternatives/mvn' produces error
+                        sh 'ls -la /usr/share/maven/bin/mvn'
+                        sh '/usr/share/maven/bin/mvn -v'
+                        //sh 'docker run --rm maven:3.6.3-adoptopenjdk-14 mvn test'
+                    }
+                }
+                stage('test image adoptopenjdk:14-jre-hotspot') {
+                    agent { docker 'adoptopenjdk:14-jre-hotspot' }
+                    steps {
+                        echo 'Hello, JDK'
+                        sh 'java -version'
+                    }
+                }
+            }
+        }
+    }
+}
