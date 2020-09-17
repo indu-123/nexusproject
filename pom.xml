@@ -6,10 +6,10 @@
 	<artifactId>root</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<distributionManagement>
-		<repository>
+		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<url>http://localhost:8081/repository/maven-snapshots</url>
-		</repository>
+		</snapshotRepository>
 	</distributionManagement>
 	<packaging>pom</packaging>
 	<name>Maven Multi Module Root of Blog Application</name>
