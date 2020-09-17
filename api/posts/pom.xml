@@ -9,6 +9,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<artifactId>posts</artifactId>
+	
 	<groupId>de.aw.blog</groupId>
 	<version>0.0.1-SNAPSHOT</version>
 

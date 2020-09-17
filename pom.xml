@@ -1,13 +1,21 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>de.aw.blog</groupId>
-  <artifactId>root</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>Maven Multi Module Root of Blog Application</name>
-  <modules>
-  	<module>api</module>
-  	<module>app</module>
- 	<module>app-mysql</module>
-  </modules>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.aw.blog</groupId>
+	<artifactId>root</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<distributionManagement>
+		<repository>
+			<id>nexus-snapshots</id>
+			<url>http://localhost:8081/repository/maven-snapshots</url>
+		</repository>
+	</distributionManagement>
+	<packaging>pom</packaging>
+	<name>Maven Multi Module Root of Blog Application</name>
+	<modules>
+		<module>api</module>
+		<module>app</module>
+		<module>app-mysql</module>
+	</modules>
 </project>
