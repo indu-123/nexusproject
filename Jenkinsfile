@@ -17,10 +17,14 @@ pipeline {
                     agent {
                         docker {
                             image 'maven:3.6.3-adoptopenjdk-14'
+                            args '--network indunetwork'
                         }
                     }
                     steps {
-                        sh 'mvn install -DskipTests'                
+                        configFileProvider(
+                        [configFile(fileId: 'indusettings', variable: 'MAVEN_SETTINGS')]) {
+                        sh 'mvn -s $MAVEN_SETTINGS clean deploy'
+                     }               
                     }
                 }
             }
